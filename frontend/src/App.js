@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+
+import Header from './components/Header/Header'
 
 function App() {
-    return <h1>React подключен</h1>
+    const [leads, setLeads] = useState([])
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/api/leads/')
+            .then(response => response.json())
+            .then(leads => {
+                setLeads(leads)
+            })
+    })
+
+    return (
+        <Fragment>
+            <Header />
+            {leads.length ? <p>Есть лиды</p> : <p>Нет лидов</p>}
+        </Fragment>
+    )
 }
 
 export default App
