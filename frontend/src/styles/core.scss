@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/**
+ * Основные стили
+ **/
+
+html {
+    font-size: 16px;
+    font-weight: 300;
+    color: $black;
+}
+
+body {
+    font-family: 'Raleway', 'Arial', sans-serif;
+    min-width: 320px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.wrap {
+    @include min-max(320px, 1140px, 15px);
+}
+
+.hidden {
+    @include visually-hidden();
+}

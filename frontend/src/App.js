@@ -11,12 +11,21 @@ function App() {
             .then(leads => {
                 setLeads(leads)
             })
-    })
+    }, [])
 
     return (
         <Fragment>
             <Header />
-            {leads.length ? <p>Есть лиды</p> : <p>Нет лидов</p>}
+            {leads.length ? (
+                leads.map((lead, index) => {
+                    return (
+                        <div key={index}>
+                            <p>{lead.message}</p>
+                            <img src={lead.photo} />
+                        </div>
+                    )
+                })
+            ) : <p>Нет лидов</p>}
         </Fragment>
     )
 }
